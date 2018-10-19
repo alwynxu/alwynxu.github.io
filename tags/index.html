@@ -80,13 +80,13 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
+<meta property="og:title" content="文章标签">
 <meta property="og:url" content="http://www.alwyn.cn/tags/index.html">
 <meta property="og:site_name" content="Alwyn.xu&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-19T15:29:56.515Z">
+<meta property="og:updated_time" content="2018-10-19T15:36:33.047Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
+<meta name="twitter:title" content="文章标签">
 
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <title>tags | Alwyn.xu's Blog</title>
+  <title>文章标签 | Alwyn.xu's Blog</title>
   
 
 
@@ -296,7 +296,7 @@
     <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
+	<h1 class="post-title" itemprop="name headline">文章标签</h1>
 
 
 
@@ -308,7 +308,14 @@
       <div class="post-body">
         
         
-          
+          <div class="tag-cloud">
+            <div class="tag-cloud-title">
+                目前共计 3 个标签
+            </div>
+            <div class="tag-cloud-tags">
+              <a href="/tags/jQuery/" style="font-size: 12px; color: #ccc">jQuery</a> <a href="/tags/表单验证/" style="font-size: 12px; color: #ccc">表单验证</a> <a href="/tags/表格/" style="font-size: 12px; color: #ccc">表格</a>
+            </div>
+          </div>
         
       </div>
       
@@ -326,18 +333,6 @@
 
 
           
-
-  
-    <div class="comments" id="comments">
-      
-        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
-        <div id="gitment-container" style="display:none"></div>
-      
-    </div>
-
-  
-
-
 
         </div>
         
@@ -384,10 +379,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">分类</span>
-                
+                </a>
               </div>
             
 
@@ -395,10 +390,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
-                
+                </a>
               </div>
             
 
@@ -601,34 +596,6 @@
       </style>
     
 
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname, 
-            owner: 'aloneshun',
-            repo: 'gitment',
-            
-            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: 'f9b79c0cbdd0eef6d921a479533c43746d390211',
-            
-                client_id: '0dfa3b4569cac16e997f'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      function showGitment(){
-        document.getElementById("gitment-display-button").style.display = "none";
-        document.getElementById("gitment-container").style.display = "block";
-        renderGitment();
-      }
-      
-      </script>
     
 
 
