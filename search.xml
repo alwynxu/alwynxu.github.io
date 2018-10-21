@@ -3,6 +3,40 @@
   
     
     <entry>
+      <title>Redis连接池</title>
+      <link href="/2018/10/21/distributed-architecture/Redis/Redis%E8%BF%9E%E6%8E%A5%E6%B1%A0/"/>
+      <url>/2018/10/21/distributed-architecture/Redis/Redis%E8%BF%9E%E6%8E%A5%E6%B1%A0/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    <entry>
+      <title>Spring注解开发实现零配置</title>
+      <link href="/2018/10/21/SpringFramework/Spring%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91%E5%AE%9E%E7%8E%B0%E9%9B%B6%E9%85%8D%E7%BD%AE/"/>
+      <url>/2018/10/21/SpringFramework/Spring%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91%E5%AE%9E%E7%8E%B0%E9%9B%B6%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>Spring是一个管理Bean的容器，由于Bean与Bean之间的依赖关系而引入了DI从而实现一种IOC，即控制反转，因此Spring容器也可以被称作IOC容器（ApplicationContext）。</p></blockquote><a id="more"></a><ol><li><p>XML配置文件的方式注册组件</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag"><span class="attr">xmlns:xis</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag"><span class="attr">xsi:schemaLocation</span>=<span class="string">""</span><span class="attr">http:</span>//<span class="attr">www.springframework.org</span>/<span class="attr">schema</span>/<span class="attr">beans</span> <span class="attr">http:</span>//<span class="attr">www.springframework.org</span>/<span class="attr">schema</span>/<span class="attr">beans</span>/<span class="attr">spring-beans-4.2.xsd</span>"&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure><p> ClassPathXmlApplicationContext(String location)</p></li><li><p>注解方式注册组件<br> a. @Configuration 配置类注解，修饰类，告诉Spring这是一个配置类<br> b. @Bean          组件类注解，给容器中注册一个Bean，类型为返回值类型，id默认是用方法名做为id</p></li></ol><pre><code>AnnotationConfigApplicationContext(Class configClazz)</code></pre><ol start="3"><li>包扫描<br>配置类上添加注解<br>@ComponentScan(value=”com.alwyn”, excludeFilters={<br> @Filter(type=FilterType.Annotation, classes={Controller.class}),<br> @Filter(type=FilterType.ASSIGNABLE_TYPE, class=BookService.class),<br> @Filter(type=FilterType.REGEX, class=””),</li></ol><p>})</p><ul><li>value指定扫描的包</li><li>includeFilters: 必须设置useDefaultFilters为false</li><li>excludeFilters :  Filter[] includeFilters() default {};</li><li>useDefaultFilters : defualt true;</li><li>扫描的注解包括：@Controller @Service @Repository @Component</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> SpringFramework </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 注解开发 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>有关java构造函数调用</title>
       <link href="/2018/10/21/%E6%9C%89%E5%85%B3java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/"/>
       <url>/2018/10/21/%E6%9C%89%E5%85%B3java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/</url>
