@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Redis连接池," />
 
 
 
@@ -79,14 +79,18 @@
 
 
 
+<meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657package com.alwyn.redis.test;import redis.clients.jedis.Jedis;import redis.clients.jedis.JedisP">
+<meta name="keywords" content="Redis连接池">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis连接池">
 <meta property="og:url" content="http://www.alwyn.cn/2018/10/21/distributed-architecture/Redis/Redis连接池/index.html">
 <meta property="og:site_name" content="Alwyn.xu&#39;s Blog">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657package com.alwyn.redis.test;import redis.clients.jedis.Jedis;import redis.clients.jedis.JedisP">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-21T11:51:50.088Z">
+<meta property="og:updated_time" content="2018-10-21T12:01:32.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis连接池">
+<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657package com.alwyn.redis.test;import redis.clients.jedis.Jedis;import redis.clients.jedis.JedisP">
 
 
 
@@ -343,6 +347,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -391,7 +417,9 @@
       
 
       
-        
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.alwyn.redis.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> redis.clients.jedis.Jedis;</span><br><span class="line"><span class="keyword">import</span> redis.clients.jedis.JedisPool;</span><br><span class="line"><span class="keyword">import</span> redis.clients.jedis.JedisPoolConfig;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisPoolUtils</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> JedisPool jedisPool = <span class="keyword">null</span>;</span><br><span class="line">	<span class="comment">//被volatile修饰的变量不会被本地线程缓存，对该变量的读写都是直接操作共享内存，保证变量值的“可见性”</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//不能在外部创建对象</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">RedisPoolUtils</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> JedisPool <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  <span class="comment">//双锁校验机制</span></span><br><span class="line">		<span class="keyword">if</span> (jedisPool == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">synchronized</span> (RedisPoolUtils.class) &#123;</span><br><span class="line">				<span class="keyword">if</span> (jedisPool == <span class="keyword">null</span>) &#123;</span><br><span class="line">					JedisPoolConfig poolConfig = <span class="keyword">new</span> JedisPoolConfig();</span><br><span class="line">					</span><br><span class="line">					<span class="comment">//设置Jedis最大连接数</span></span><br><span class="line">					poolConfig.setMaxTotal(<span class="number">100</span>);</span><br><span class="line">					</span><br><span class="line">					<span class="comment">///设置Jedis连接最大空闲数</span></span><br><span class="line">					poolConfig.setMaxIdle(<span class="number">10</span>);</span><br><span class="line">					</span><br><span class="line">					 <span class="comment">//设置获取Jedis连接的最大等待时间（50秒）  </span></span><br><span class="line">					poolConfig.setMaxWaitMillis(<span class="number">50</span> * <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">					<span class="comment">//设置在获取Jedis连接时，自动检验连接是否可用  </span></span><br><span class="line">					poolConfig.setTestOnBorrow(<span class="keyword">true</span>);</span><br><span class="line">					</span><br><span class="line">			        <span class="comment">//设置在将连接放回池中前，自动检验连接是否有效  </span></span><br><span class="line">					poolConfig.setTestOnReturn(<span class="keyword">true</span>);  </span><br><span class="line">					</span><br><span class="line">			        <span class="comment">//设置自动测试池中的空闲连接是否都是可用连接  </span></span><br><span class="line">					poolConfig.setTestWhileIdle(<span class="keyword">true</span>);  </span><br><span class="line">					</span><br><span class="line">					jedisPool = <span class="keyword">new</span> JedisPool(poolConfig,<span class="string">"39.107.226.243"</span>, <span class="number">6379</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> jedisPool;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 关闭Jedis连接</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> jedisPool</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> jedis</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">(JedisPool jedisPool, Jedis jedis)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">null</span> != jedis) &#123;</span><br><span class="line">			jedisPool.returnResourceObject(jedis);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.alwyn.redis.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> redis.clients.jedis.Jedis;</span><br><span class="line"><span class="keyword">import</span> redis.clients.jedis.JedisPool;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JedisPoolDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	     JedisPool jedisPool = RedisPoolUtils.getInstance();</span><br><span class="line">	     Jedis jedis = <span class="keyword">null</span>;</span><br><span class="line">	     <span class="keyword">try</span> </span><br><span class="line">	     &#123;</span><br><span class="line">	       jedis = jedisPool.getResource();</span><br><span class="line">	       jedis.set(<span class="string">"k18"</span>,<span class="string">"v183"</span>);</span><br><span class="line">	     &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">	       e.printStackTrace();</span><br><span class="line">	     &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">	    	 RedisPoolUtils.release(jedisPool, jedis);</span><br><span class="line">	     &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -452,6 +480,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redis连接池/" rel="tag"># Redis连接池</a>
+          
+        </div>
       
 
       
@@ -557,7 +591,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -568,7 +602,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
