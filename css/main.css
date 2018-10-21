@@ -1862,15 +1862,15 @@ pre .javascript .function {
   margin-top: 0;
 }
 .site-author-image {
-  display: inline;
+  display: block;
   margin: 0 auto;
   padding: 2px;
   max-width: 96px;
   height: auto;
   border: 2px solid #333;
-  border-radius: 50px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
 }
 .site-author-name {
   margin: 5px 0 0;
@@ -1958,7 +1958,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff33f4;
+  background: #0ea728;
 }
 .links-of-blogroll {
   font-size: 13px;
