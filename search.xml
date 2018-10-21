@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>有关java构造函数调用</title>
+      <link href="/2018/10/21/%E6%9C%89%E5%85%B3java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/"/>
+      <url>/2018/10/21/%E6%9C%89%E5%85%B3java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>构造方法用来初始化类的对象，与父类的其它成员不同，它不能被子类继承（子类可以继承父类所有的成员变量和成员方法，但不继承父类的构造方法）。因此，在创建子类对象时，为了初始化从父类继承来的数据成员，系统需要调用其父类的构造方法。<br><a id="more"></a><br>如果没有显式的构造函数，编译器会给一个默认的构造函数，并且该默认的构造函数仅仅在没有显式地声明构造函数情况下创建。<br>构造原则如下：</p><ol><li>如果子类没有定义构造方法，则调用父类的无参数的构造方法。</li><li>如果子类定义了构造方法，不论是无参数还是带参数，在创建子类的对象的时候,首先执行父类无参数的构造方法，然后执行自己的构造方法。</li><li>在创建子类对象时候，如果子类的构造函数没有显示调用父类的构造函数，则会调用父类的默认无参构造函数。</li><li>在创建子类对象时候，如果子类的构造函数没有显示调用父类的构造函数且父类自己提供了无参构造函数，则会调用父类自己的无参构造函数。</li><li>在创建子类对象时候，如果子类的构造函数没有显示调用父类的构造函数且父类只定义了自己的有参构造函数，则会出错（如果父类只有有参数的构造方法，则子类必须显示调用此带参构造方法）。</li><li>如果子类调用父类带参数的构造方法，需要用初始化父类成员对象的方式</li></ol></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Reactive Programming</title>
       <link href="/2018/10/20/Reactive-Programming/"/>
       <url>/2018/10/20/Reactive-Programming/</url>
@@ -47,6 +70,52 @@
             <tag> 表格 </tag>
             
             <tag> 表单验证 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Extjs首节点选中</title>
+      <link href="/2018/05/23/Extjs%E9%A6%96%E8%8A%82%E7%82%B9%E9%80%89%E4%B8%AD/"/>
+      <url>/2018/05/23/Extjs%E9%A6%96%E8%8A%82%E7%82%B9%E9%80%89%E4%B8%AD/</url>
+      
+        <content type="html"><![CDATA[<p>Extjs通常会要求在tree加载显示后，默认选中除去根节点（root节点）意外的第一个node，思路：1.添加TreeStore监听。 2.获取要选中的node。 3.获取selMode，调用select方法<br><a id="more"></a></p><h2 id="1-添加TreeStore监听"><a href="#1-添加TreeStore监听" class="headerlink" title="1. 添加TreeStore监听"></a>1. 添加TreeStore监听</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> treeStore = Ext.create(<span class="string">'Ext.data.TreeStore'</span>,&#123;    <span class="comment">//定义treeStore</span></span><br><span class="line">model : <span class="string">'Model'</span>,   <span class="comment">//数据model</span></span><br><span class="line">root : &#123;</span><br><span class="line">id : <span class="string">''</span>,</span><br><span class="line">text : <span class="string">''</span>,</span><br><span class="line">type : <span class="string">'ROOT'</span></span><br><span class="line">&#125;,</span><br><span class="line">autoLoad : <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">treeStore.on(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">s, operator, eOpts</span>)</span>&#123;</span><br><span class="line"><span class="keyword">var</span> rootNode = s.getRootNode();   <span class="comment">//获取根节点</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> ExtJs </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ExtJs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>redhat and ubuntu network setting</title>
+      <link href="/2017/04/01/redhat-and-ubuntu-network-setting/"/>
+      <url>/2017/04/01/redhat-and-ubuntu-network-setting/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><h2 id="1-ubuntu14网络配置"><a href="#1-ubuntu14网络配置" class="headerlink" title="1. ubuntu14网络配置"></a>1. ubuntu14网络配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/network/</span><br><span class="line">vim interfaces</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># This file describes the network interfaces available on your system</span><br><span class="line"># and how to activate them. For more information, see interfaces(5).</span><br><span class="line"></span><br><span class="line"># The loopback network interface</span><br><span class="line">auto lo</span><br><span class="line">iface lo inet loopback</span><br><span class="line"></span><br><span class="line"># The primary network interface</span><br><span class="line">auto eth0</span><br><span class="line">iface eth0 inet dhcp</span><br><span class="line"></span><br><span class="line"># 添加网络配置</span><br><span class="line">auto eth1</span><br><span class="line">iface eth1 inet static</span><br><span class="line">        address 192.168.56.101</span><br><span class="line">        network 192.168.0.0</span><br><span class="line">        netmask 255.255.255.0</span><br><span class="line">        gateway 192.168.0.1</span><br></pre></td></tr></table></figure><h2 id="2-redhat网络配置"><a href="#2-redhat网络配置" class="headerlink" title="2. redhat网络配置"></a>2. redhat网络配置</h2><p>配置文件位于: <code>/etc/sysconfig/network-scripts/</code><br>编辑文件 ： <code>vim ifcfg-eth0</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">DEVICE=eth0</span><br><span class="line">HWADDR=08:00:27:84:ba:8b</span><br><span class="line">TYPE=Ethernet</span><br><span class="line">UUID=ef3bdd7e-fc7f-43cd-b057-536128da39fe</span><br><span class="line">ONBOOT=yes</span><br><span class="line">BOOTPROTO=dhcp</span><br><span class="line">IPADDR=192.168.56.102</span><br><span class="line">GETWAY=192.168.0.1</span><br><span class="line">PREFIX=24</span><br><span class="line">DNS=192.168.1.1 </span><br><span class="line">NETMASK=255.255.255.0</span><br></pre></td></tr></table></figure></p><p>重启服务：<code>servie network restart</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> ubuntu </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ubuntu网络设置 </tag>
             
         </tags>
       
