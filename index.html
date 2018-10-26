@@ -459,11 +459,11 @@
         
           
             <p>NFS Network File System 网络文件系统</p>
-<p>####安装NFS服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//安装服务</span><br><span class="line">sudo apt-get install nfs-kernel-server </span><br><span class="line"></span><br><span class="line">//配置文件</span><br><span class="line">sudo vim /etc/exports </span><br><span class="line"></span><br><span class="line">exports文件内容添加</span><br><span class="line">/home/alwynxu/file *(rw,sync,no_root_squash,no_subtree_check)</span><br><span class="line"></span><br><span class="line">//重启服务</span><br><span class="line">service nfs-kernel-server restart</span><br></pre></td></tr></table></figure></p>
-<p>###查看服务器共享的目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alwynxu@alwynxu:~$ showmount -e localhost</span><br><span class="line">Export list for localhost:</span><br><span class="line">/home/alwynxu/file *</span><br></pre></td></tr></table></figure></p>
+<h3 id="安装NFS服务"><a href="#安装NFS服务" class="headerlink" title="安装NFS服务"></a>安装NFS服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//安装服务</span><br><span class="line">sudo apt-get install nfs-kernel-server </span><br><span class="line"></span><br><span class="line">//配置文件</span><br><span class="line">sudo vim /etc/exports </span><br><span class="line"></span><br><span class="line">exports文件内容添加</span><br><span class="line">/home/alwynxu/file *(rw,sync,no_root_squash,no_subtree_check)</span><br><span class="line"></span><br><span class="line">//重启服务</span><br><span class="line">service nfs-kernel-server restart</span><br></pre></td></tr></table></figure>
+<h3 id="查看服务器共享的目录"><a href="#查看服务器共享的目录" class="headerlink" title="查看服务器共享的目录"></a>查看服务器共享的目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alwynxu@alwynxu:~$ showmount -e localhost</span><br><span class="line">Export list for localhost:</span><br><span class="line">/home/alwynxu/file *</span><br></pre></td></tr></table></figure>
 <p>其中<strong>/home/alwynxu/file</strong>当前nfs服务器要共享的文件夹路径，* 代表所有客户端均可访问  (rw,sync,no_root_squash,no_subtree_check)一些权限设置</p>
 <p>在客户端执行命令，将nfs共享服务器文件夹挂载到当前客户端的/Users/alwynxu/mountfile路径下， 注意添加<code>-o resvport</code> 选项,否则会出现无法访问的错错误<br><code>alwynxudeMacBook-Pro:mountfile alwynxu$ sudo mount -t nfs -o rw -o tcp -o resvport 10.194.35.100:/home/alwynxu/file /Users/alwynxu/mountfile</code></p>
-<p><strong>错误</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alwynxudeMacBook-Pro:mountfile alwynxu$ sudo mount -t nfs -o rw -o tcp 10.194.35.100:/home/alwynxu/file /Users/alwynxu/mountfile</span><br><span class="line">mount_nfs: can&apos;t mount /home/alwynxu/file from 10.194.35.100 onto /Users/alwynxu/mountfile: Operation not permitted</span><br></pre></td></tr></table></figure></p>
+<h3 id="错误"><a href="#错误" class="headerlink" title="错误"></a><strong>错误</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alwynxudeMacBook-Pro:mountfile alwynxu$ sudo mount -t nfs -o rw -o tcp 10.194.35.100:/home/alwynxu/file /Users/alwynxu/mountfile</span><br><span class="line">mount_nfs: can&apos;t mount /home/alwynxu/file from 10.194.35.100 onto /Users/alwynxu/mountfile: Operation not permitted</span><br></pre></td></tr></table></figure>
 <p>java中接受的上传文件可以通过<code>MultipartFile</code>来接收并通过<code>transferTo</code>将文件上传到NFS服务器<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uploadFile</span><span class="params">(MultipartFile file)</span></span>&#123;</span><br><span class="line">    <span class="comment">//注意此文件夹路径是挂载点的路径，也即当前应用所在的服务器中的路径，而非NFS服务器上的路径地址。</span></span><br><span class="line">    String serverPath = <span class="string">"/home/alwynxu/file"</span>;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        file.transterTo(<span class="keyword">new</span> File(serverPath+ <span class="string">"/girl.png"</span>));</span><br><span class="line">    &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
           
@@ -880,7 +880,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.alwyn.cn/2018/10/23/“Springboot获取服务端口”/">
+    <link itemprop="mainEntityOfPage" href="http://www.alwyn.cn/2018/10/23/Springboot获取服务端口/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="alwyn.xu">
@@ -899,7 +899,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/23/“Springboot获取服务端口”/" itemprop="url">“Springboot获取服务端口”</a></h1>
+                <a class="post-title-link" href="/2018/10/23/Springboot获取服务端口/" itemprop="url">Springboot获取服务端口</a></h1>
         
 
         <div class="post-meta">
@@ -951,7 +951,7 @@
 
           
           
-             <span id="/2018/10/23/“Springboot获取服务端口”/" class="leancloud_visitors" data-flag-title="“Springboot获取服务端口”">
+             <span id="/2018/10/23/Springboot获取服务端口/" class="leancloud_visitors" data-flag-title="Springboot获取服务端口">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
