@@ -3,6 +3,17 @@
   
     
     <entry>
+      <title>java动态代理</title>
+      <link href="/2018/10/29/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
+      <url>/2018/10/29/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p>支持处理使用AspectJ的@Aspect注释标记的组件，类似于Spring的&lt;aop：aspectj-autoproxy&gt; XML元素中的功能。</p><p>@Configuration<br> @EnableAspectJAutoProxy<br> public class AppConfig {</p><pre><code>@Beanpublic FooService fooService() {    return new FooService();}@Beanpublic MyAspect myAspect() {    return new MyAspect();}</code></pre><p> }</p><p>FooService类是一个典型的POJO组件 而MyAspect类 是一个 @Aspect-style 的切面:<br> public class FooService {</p><pre><code>// various methods</code></pre><p> }</p><p> @Aspect<br> public class MyAspect {</p><pre><code>@Before(&quot;execution(* FooService+.*(..))&quot;)public void advice() {    // advise FooService methods as appropriate}</code></pre><p> }</p><p> 在上面的场景中，@ EnableAspectJAutoProxy确保正确处理MyAspect，并将FooService代理混合在它提供的建议中。</p><p>用户可以使用proxyTargetClass（）属性控制为FooService创建的代理类型。以下启用CGLIB样式的“子类”代理，而不是基于默认接口的JDK代理方法。</p><p>@Configuration<br> @EnableAspectJAutoProxy(proxyTargetClass=true)<br> public class AppConfig {<br>     // …<br> }<br> CGLIB但因为采用的是继承，所以不能对final修饰的类进行代理。</p><p> @EnableAspectJAutoProxy仅适用于其本地应用程序上下文，允许在不同级别选择性地代理bean。</p><p> exposeProxy - 指示代理应由AOP框架作为ThreadLocal公开，以便通过AopContext类进行检索。<br> proxyTargetClass - 指示是否要创建基于子类的（CGLIB）代理，而不是基于标准Java接口的代理。默认值为false。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    <entry>
       <title>Ubuntu设置NFS共享文件服务器</title>
       <link href="/2018/10/26/%E8%AE%BE%E7%BD%AENFS%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
       <url>/2018/10/26/%E8%AE%BE%E7%BD%AENFS%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
