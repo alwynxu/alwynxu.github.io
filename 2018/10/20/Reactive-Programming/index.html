@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="Define “Reactive”We touched on “non-blocking” and “functional” but what does reactive mean? The term, “reactive,” refers to programming models that are built around reacting to change — network compon">
+<meta name="description" content="“Reactive”响应式编程，核心观察者模式，消息和事件驱动、函数式。">
 <meta name="keywords" content="Reactive">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Reactive Programming">
 <meta property="og:url" content="http://www.alwyn.cn/2018/10/20/Reactive-Programming/index.html">
 <meta property="og:site_name" content="Alwyn.xu&#39;s Blog">
-<meta property="og:description" content="Define “Reactive”We touched on “non-blocking” and “functional” but what does reactive mean? The term, “reactive,” refers to programming models that are built around reacting to change — network compon">
+<meta property="og:description" content="“Reactive”响应式编程，核心观察者模式，消息和事件驱动、函数式。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-20T09:23:05.191Z">
+<meta property="og:updated_time" content="2018-11-02T05:08:12.599Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reactive Programming">
-<meta name="twitter:description" content="Define “Reactive”We touched on “non-blocking” and “functional” but what does reactive mean? The term, “reactive,” refers to programming models that are built around reacting to change — network compon">
+<meta name="twitter:description" content="“Reactive”响应式编程，核心观察者模式，消息和事件驱动、函数式。">
 
 
 
@@ -425,7 +425,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  235
+                  258
                 </span>
               
 
@@ -462,7 +462,9 @@
       
 
       
-        <p>Define “Reactive”<br>We touched on “non-blocking” and “functional” but what does reactive mean?</p>
+        <pre><code>“Reactive”响应式编程，核心观察者模式，消息和事件驱动、函数式。
+</code></pre><a id="more"></a>
+<p>Define “Reactive”<br>We touched on “non-blocking” and “functional” but what does reactive mean?</p>
 <p>The term, “reactive,” refers to programming models that are built around reacting to change — network components reacting to I/O events, UI controllers reacting to mouse events, and others. In that sense, non-blocking is reactive, because, instead of being blocked, we are now in the mode of reacting to notifications as operations complete or data becomes available.</p>
 <p>There is also another important mechanism that we on the Spring team associate with “reactive” and that is non-blocking back pressure. In synchronous, imperative code, blocking calls serve as a natural form of back pressure that forces the caller to wait. In non-blocking code, it becomes important to control the rate of events so that a fast producer does not overwhelm its destination.</p>
 <p>Reactive Streams is a small spec (also adopted in Java 9) that defines the interaction between asynchronous components with back pressure. For example a data repository (acting as Publisher) can produce data that an HTTP server (acting as Subscriber) can then write to the response. The main purpose of Reactive Streams is to let the subscriber to control how quickly or how slowly the publisher produces data.</p>
@@ -769,7 +771,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">5k</span>
+    <span title="Site words total count">5.2k</span>
   
 </div>
 

@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Alwyn.xu&#39;s Blog">
 <meta property="og:description" content="通过自己的服务器搭建gitment评论系统">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-26T05:47:31.598Z">
+<meta property="og:updated_time" content="2018-11-02T05:09:32.411Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo gitment登录问题解决">
 <meta name="twitter:description" content="通过自己的服务器搭建gitment评论系统">
@@ -436,7 +436,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  315
+                  337
                 </span>
               
 
@@ -480,6 +480,10 @@
 <p>修改文件替换js文件路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if not (theme.duoshuo and theme.duoshuo.shortname) and not theme.duoshuo_shortname %&#125;</span><br><span class="line">&#123;% if theme.gitment.enable and theme.gitment.client_id %&#125;</span><br><span class="line">&lt;!-- LOCAL: You can save these files to your site and update links --&gt;</span><br><span class="line">    &#123;% if theme.gitment.mint %&#125;</span><br><span class="line">        &#123;% set CommentsClass = &quot;Gitmint&quot; %&#125;</span><br><span class="line">        &lt;link rel=&quot;stylesheet&quot; href=&quot;https://aimingoo.github.io/gitmint/style/default.css&quot;&gt;</span><br><span class="line">        &lt;!-- 更换此处的js路径为github上的路径 ， 同时修改该js文件中的认证登录地址为自己的服务--&gt;</span><br><span class="line">        &lt;script src=&quot;https://gitmenta.github.io/gitmenta/gitmint.browser.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &#123;% else %&#125;</span><br><span class="line">        &#123;% set CommentsClass = &quot;Gitment&quot; %&#125;</span><br><span class="line">        &lt;link rel=&quot;stylesheet&quot; href=&quot;https://imsun.github.io/gitment/style/default.css&quot;&gt;</span><br><span class="line">        &lt;script src=&quot;https://imsun.github.io/gitment/dist/gitment.browser.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line">&lt;!-- END LOCAL --&gt;</span><br><span class="line">``</span><br><span class="line">修改文件中： </span><br><span class="line">查找 https://gh-oauth.imsun.net  并替换为自己的服务器地址</span><br><span class="line">https://gitmenta.github.io/gitmenta/gitmint.browser.js&quot;</span><br></pre></td></tr></table></figure></p>
 <p>this.state.user.isLoggingIn = true;<br>      var logging = !proxy_gateway ? _utils.http.post(‘<a href="https://gh-oauth.imsun.net" target="_blank" rel="noopener">https://gh-oauth.imsun.net</a> ‘, { code: code, client_id: client_id, client_secret: client_secret }, ‘’) : _utils.http.post(‘/login/oauth/access_token’, ‘code=’ + code + ‘&amp;client_id=’ + client_id, proxy_gateway);<br>      logging.then(function (data) {<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 搭建服务器</span><br></pre></td></tr></table></figure></p>
 <p>git clone <a href="https://github.com/imsun/gh-oauth-server.git" target="_blank" rel="noopener">https://github.com/imsun/gh-oauth-server.git</a><br>npm install &amp;&amp; npm start<br><code>`</code><br>默认会在3000端口启动服务</p>
+<hr>
+<blockquote>
+<p>问题：在https中调用http的js文件会被浏览器阻止，需要ssl认证</p>
+</blockquote>
 
       
     </div>
@@ -756,7 +760,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">5k</span>
+    <span title="Site words total count">5.2k</span>
   
 </div>
 

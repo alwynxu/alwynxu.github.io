@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="NFS Network File System 网络文件系统 安装NFS服务1234567891011//安装服务sudo apt-get install nfs-kernel-server //配置文件sudo vim /etc/exports exports文件内容添加/home/alwynxu/file *(rw,sync,no_root_squash,no_subtree_check)//">
+<meta name="description" content="多个服务器共享同一个文件服务器，通过NFS网络文件系统来设置。">
 <meta name="keywords" content="nfs,NFS,共享服务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu设置NFS共享文件服务器">
 <meta property="og:url" content="http://www.alwyn.cn/2018/10/26/设置NFS共享文件服务器/index.html">
 <meta property="og:site_name" content="Alwyn.xu&#39;s Blog">
-<meta property="og:description" content="NFS Network File System 网络文件系统 安装NFS服务1234567891011//安装服务sudo apt-get install nfs-kernel-server //配置文件sudo vim /etc/exports exports文件内容添加/home/alwynxu/file *(rw,sync,no_root_squash,no_subtree_check)//">
+<meta property="og:description" content="多个服务器共享同一个文件服务器，通过NFS网络文件系统来设置。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-26T05:56:57.914Z">
+<meta property="og:updated_time" content="2018-11-02T05:11:45.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu设置NFS共享文件服务器">
-<meta name="twitter:description" content="NFS Network File System 网络文件系统 安装NFS服务1234567891011//安装服务sudo apt-get install nfs-kernel-server //配置文件sudo vim /etc/exports exports文件内容添加/home/alwynxu/file *(rw,sync,no_root_squash,no_subtree_check)//">
+<meta name="twitter:description" content="多个服务器共享同一个文件服务器，通过NFS网络文件系统来设置。">
 
 
 
@@ -436,7 +436,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  338
+                  365
                 </span>
               
 
@@ -473,8 +473,9 @@
       
 
       
-        <p>NFS Network File System 网络文件系统</p>
-<h3 id="安装NFS服务"><a href="#安装NFS服务" class="headerlink" title="安装NFS服务"></a>安装NFS服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//安装服务</span><br><span class="line">sudo apt-get install nfs-kernel-server </span><br><span class="line"></span><br><span class="line">//配置文件</span><br><span class="line">sudo vim /etc/exports </span><br><span class="line"></span><br><span class="line">exports文件内容添加</span><br><span class="line">/home/alwynxu/file *(rw,sync,no_root_squash,no_subtree_check)</span><br><span class="line"></span><br><span class="line">//重启服务</span><br><span class="line">service nfs-kernel-server restart</span><br></pre></td></tr></table></figure>
+        <pre><code>多个服务器共享同一个文件服务器，通过NFS网络文件系统来设置。
+</code></pre><a id="more"></a>
+<h2 id="NFS-Network-File-System-网络文件系统"><a href="#NFS-Network-File-System-网络文件系统" class="headerlink" title="NFS Network File System 网络文件系统"></a>NFS Network File System 网络文件系统</h2><h3 id="安装NFS服务"><a href="#安装NFS服务" class="headerlink" title="安装NFS服务"></a>安装NFS服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//安装服务</span><br><span class="line">sudo apt-get install nfs-kernel-server </span><br><span class="line"></span><br><span class="line">//配置文件</span><br><span class="line">sudo vim /etc/exports </span><br><span class="line"></span><br><span class="line">exports文件内容添加</span><br><span class="line">/home/alwynxu/file *(rw,sync,no_root_squash,no_subtree_check)</span><br><span class="line"></span><br><span class="line">//重启服务</span><br><span class="line">service nfs-kernel-server restart</span><br></pre></td></tr></table></figure>
 <h3 id="查看服务器共享的目录"><a href="#查看服务器共享的目录" class="headerlink" title="查看服务器共享的目录"></a>查看服务器共享的目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alwynxu@alwynxu:~$ showmount -e localhost</span><br><span class="line">Export list for localhost:</span><br><span class="line">/home/alwynxu/file *</span><br></pre></td></tr></table></figure>
 <p>其中<strong>/home/alwynxu/file</strong>当前nfs服务器要共享的文件夹路径，* 代表所有客户端均可访问  (rw,sync,no_root_squash,no_subtree_check)一些权限设置</p>
 <p>在客户端执行命令，将nfs共享服务器文件夹挂载到当前客户端的/Users/alwynxu/mountfile路径下， 注意添加<code>-o resvport</code> 选项,否则会出现无法访问的错错误<br><code>alwynxudeMacBook-Pro:mountfile alwynxu$ sudo mount -t nfs -o rw -o tcp -o resvport 10.194.35.100:/home/alwynxu/file /Users/alwynxu/mountfile</code></p>
@@ -751,7 +752,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装NFS服务"><span class="nav-number">1.</span> <span class="nav-text">安装NFS服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看服务器共享的目录"><span class="nav-number">2.</span> <span class="nav-text">查看服务器共享的目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误"><span class="nav-number">3.</span> <span class="nav-text">错误</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS-Network-File-System-网络文件系统"><span class="nav-number">1.</span> <span class="nav-text">NFS Network File System 网络文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装NFS服务"><span class="nav-number">1.1.</span> <span class="nav-text">安装NFS服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看服务器共享的目录"><span class="nav-number">1.2.</span> <span class="nav-text">查看服务器共享的目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误"><span class="nav-number">1.3.</span> <span class="nav-text">错误</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -785,7 +786,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">5k</span>
+    <span title="Site words total count">5.2k</span>
   
 </div>
 

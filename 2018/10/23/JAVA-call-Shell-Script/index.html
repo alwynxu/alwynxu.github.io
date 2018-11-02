@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="java,shell," />
+  <meta name="keywords" content="shell,java," />
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="12345678910111213141516171819202122232425262728293031public void testShell()&amp;#123;        try &amp;#123;            Runtime runtime = Runtime.getRuntime();            Process process = runtime.exec(&quot;/User">
-<meta name="keywords" content="java,shell">
+<meta name="description" content="在JAVA中调用`Shell`，源于小米开源SQL优化工具[SOAR](https://github.com/XiaoMi/soar)，具体工具使用方法可以直接在[GitHub](https://github.com/XiaoMi/soar)上查看。但是该工具没有界面，于是想通过前端界面发送sql到后台，由后台调用shell脚本来执行。">
+<meta name="keywords" content="shell,java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA call Shell Script">
 <meta property="og:url" content="http://www.alwyn.cn/2018/10/23/JAVA-call-Shell-Script/index.html">
 <meta property="og:site_name" content="Alwyn.xu&#39;s Blog">
-<meta property="og:description" content="12345678910111213141516171819202122232425262728293031public void testShell()&amp;#123;        try &amp;#123;            Runtime runtime = Runtime.getRuntime();            Process process = runtime.exec(&quot;/User">
+<meta property="og:description" content="在JAVA中调用`Shell`，源于小米开源SQL优化工具[SOAR](https://github.com/XiaoMi/soar)，具体工具使用方法可以直接在[GitHub](https://github.com/XiaoMi/soar)上查看。但是该工具没有界面，于是想通过前端界面发送sql到后台，由后台调用shell脚本来执行。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-26T05:15:58.079Z">
+<meta property="og:updated_time" content="2018-11-02T05:06:18.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA call Shell Script">
-<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031public void testShell()&amp;#123;        try &amp;#123;            Runtime runtime = Runtime.getRuntime();            Process process = runtime.exec(&quot;/User">
+<meta name="twitter:description" content="在JAVA中调用`Shell`，源于小米开源SQL优化工具[SOAR](https://github.com/XiaoMi/soar)，具体工具使用方法可以直接在[GitHub](https://github.com/XiaoMi/soar)上查看。但是该工具没有界面，于是想通过前端界面发送sql到后台，由后台调用shell脚本来执行。">
 
 
 
@@ -403,7 +403,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  159
+                  239
                 </span>
               
 
@@ -440,7 +440,9 @@
       
 
       
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testShell</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Runtime runtime = Runtime.getRuntime();</span><br><span class="line">            Process process = runtime.exec(<span class="string">"/Users/alwynxu/Desktop/jmx-demo/test.sh"</span>);</span><br><span class="line"><span class="comment">//            Process process = runtime.exec("java");</span></span><br><span class="line">            process.waitFor();</span><br><span class="line">            InputStream inputStream = process.getInputStream();</span><br><span class="line">            InputStream errorStream = process.getErrorStream();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">byte</span>[] errBytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">            <span class="keyword">byte</span>[] inputBytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">2014</span>];</span><br><span class="line">            <span class="keyword">int</span> errCount = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> inputCount = <span class="number">0</span>;</span><br><span class="line">            System.out.println(<span class="string">"执行错误命令：--------"</span>);</span><br><span class="line">            <span class="keyword">while</span> ((errCount = errorStream.read(errBytes)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                String str = <span class="keyword">new</span> String(errBytes,<span class="number">0</span>, errCount);</span><br><span class="line">                System.out.println(str);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(<span class="string">"执行结果：----------"</span>);</span><br><span class="line">            <span class="keyword">while</span> ((inputCount = inputStream.read(inputBytes)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                String str = <span class="keyword">new</span> String(inputBytes, <span class="number">0</span>, inputCount);</span><br><span class="line">                System.out.println(str);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+        <pre><code>在JAVA中调用`Shell`，源于小米开源SQL优化工具[SOAR](https://github.com/XiaoMi/soar)，具体工具使用方法可以直接在[GitHub](https://github.com/XiaoMi/soar)上查看。但是该工具没有界面，于是想通过前端界面发送sql到后台，由后台调用shell脚本来执行。
+</code></pre><a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testShell</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Runtime runtime = Runtime.getRuntime();</span><br><span class="line">            Process process = runtime.exec(<span class="string">"/Users/alwynxu/Desktop/jmx-demo/test.sh"</span>);</span><br><span class="line"><span class="comment">//            Process process = runtime.exec("java");</span></span><br><span class="line">            process.waitFor();</span><br><span class="line">            InputStream inputStream = process.getInputStream();</span><br><span class="line">            InputStream errorStream = process.getErrorStream();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">byte</span>[] errBytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">            <span class="keyword">byte</span>[] inputBytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">2014</span>];</span><br><span class="line">            <span class="keyword">int</span> errCount = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> inputCount = <span class="number">0</span>;</span><br><span class="line">            System.out.println(<span class="string">"执行错误命令：--------"</span>);</span><br><span class="line">            <span class="keyword">while</span> ((errCount = errorStream.read(errBytes)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                String str = <span class="keyword">new</span> String(errBytes,<span class="number">0</span>, errCount);</span><br><span class="line">                System.out.println(str);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(<span class="string">"执行结果：----------"</span>);</span><br><span class="line">            <span class="keyword">while</span> ((inputCount = inputStream.read(inputBytes)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                String str = <span class="keyword">new</span> String(inputBytes, <span class="number">0</span>, inputCount);</span><br><span class="line">                System.out.println(str);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">soar=/Users/alwynxu/go/src/github.com/XiaoMi/soar</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;soar&#125;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'select * from tb1'</span> | <span class="variable">$&#123;soar&#125;</span>/soar &gt; report.md</span><br><span class="line">cat report.md | <span class="variable">$&#123;soar&#125;</span>/soar -report-type md2html &gt; report.html</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -505,9 +507,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"># java</a>
-          
             <a href="/tags/shell/" rel="tag"># shell</a>
+          
+            <a href="/tags/java/" rel="tag"># java</a>
           
         </div>
       
@@ -719,7 +721,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">5k</span>
+    <span title="Site words total count">5.2k</span>
   
 </div>
 
