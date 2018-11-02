@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>Maven profile in IntellJ IDEA</title>
+      <link href="/2018/11/02/Maven-profile-in-IntellJ-IDEA/"/>
+      <url>/2018/11/02/Maven-profile-in-IntellJ-IDEA/</url>
+      
+        <content type="html"><![CDATA[<pre><code>IntelliJ IDEA lets you use Maven build profiles which can help you customize builds for a particular environment, for example, production or development.</code></pre><a id="more"></a><h3 id="Declaring-Maven-profiles"><a href="#Declaring-Maven-profiles" class="headerlink" title="Declaring Maven profiles"></a>Declaring Maven profiles</h3><p>IntelliJ IDEA lets you declare profiles explicitly in the POM of your project. Using code completion, you can place a number of different configurations inside the profiles tags and override default configurations specified in your POM for Maven plugins, dependencies, repositories, etc.<br>Open your POM in the editor.<br>Specify the <profiles> section and declare the profiles.<br><img src="/2018/11/02/Maven-profile-in-IntellJ-IDEA/maven_profile_declaration.png" alt="image"><br>IntelliJ IDEA displays them in the Profiles list of the Maven Projects tool window.<br><img src="/2018/11/02/Maven-profile-in-IntellJ-IDEA/maven_tool_win_declared_profiles.png" alt="image"></profiles></p><p>Alternatively, you can declare profiles using one of the following ways:<br>You can define them locally in the Maven settings directory %USER_HOME%/.m2/settings.xml.<br>You can define them globally in the global Maven settings ${maven.home}/conf/settings.xml.<br>You can define them in the profile descriptor located in the project’s base directory (profiles.xml). Note that this option is not supported in Maven 3.0. Please see Maven 3 compatibility notes.</p><h3 id="Activating-Maven-profiles"><a href="#Activating-Maven-profiles" class="headerlink" title="Activating Maven profiles"></a>Activating Maven profiles</h3><p>When IntelliJ IDEA imports a Maven project, it detects profiles and lets you activate them during importing.</p><ol><li>Start importing your Maven project.<br>In the Import from Maven page where IntelliJ IDEA displays the profiles, activate the ones you need.<br><img src="/2018/11/02/Maven-profile-in-IntellJ-IDEA/maven_import_proj_select_profiles.png" alt="image"></li><li>Click Next and finish your import.<br>You can activate a profile manually in the Maven Projects tool window using a -P command or using the Profiles node and the corresponding profiles’ checkboxes.<br>Open the Maven Projects tool window.<br>On the toolbar, click the <img src="https://www.jetbrains.com/help/img/idea/2018.1/maven_goal_icon.png icon" alt="image">.<br>In the dialog that opens, in the Command line field, enter -P and the name of your profile. If you need to exclude certain profiles, specify ! in front of the name of the profile. The profile will be excluded even if it is activated by default. Click OK.<br>Alternatively, you can use Profiles node in the Maven Projects tool window to activate profiles.<br>Open the Maven Projects tool window.<br>Click the Profiles node to open a list of declared profiles.<br>Select the appropriate checkboxes to activate the profiles you need. You can have several active profiles. When they are activated, their configurations are merged based on the POM profile declaration.<br>You can also activate profiles automatically according to a range of contextual conditions for example, JDK version, OS name and version, presence or absence of a specific file or property, but you still need to specify all of the parameters inside your POM.<br>You can make a Maven profile to be activated automatically by default if you declare such profile with the activeByDefault tag in the POM.<br><img src="/2018/11/02/Maven-profile-in-IntellJ-IDEA/maven_profiles_pom.png" alt="image"><br>IntelliJ IDEA displays the activeByDefault profile in the Maven Projects tool window with the selected checkbox that is greyed out.<br><img src="/2018/11/02/Maven-profile-in-IntellJ-IDEA/maven_proj_tool_win_profiles.png" alt="image"></li></ol><p>You can manually de-activate this profile by clicking the checkbox. Also note that if you manually activate any other profile, the activeByDefault profile will be de-activated.<br><img src="/2018/11/02/Maven-profile-in-IntellJ-IDEA/maven_tool_win_deactivate_profile.png" alt="image"></p><p>When you work with multi-module projects, keep in mind that if you specified the activeByDefaultprofile in your POM it will be de-activated when you manually activate any other profile even if it is declared in the POM of a different module.</p><blockquote><p>参考IntelliJ Idea官方文档:(<a href="https://www.jetbrains.com/help/idea/2018.1/maven-support.html#use_profiles_maven" target="_blank" rel="noopener">https://www.jetbrains.com/help/idea/2018.1/maven-support.html#use_profiles_maven</a>)</p></blockquote><h3 id="Intelli-IDEA中注意事项："><a href="#Intelli-IDEA中注意事项：" class="headerlink" title="Intelli IDEA中注意事项："></a>Intelli IDEA中注意事项：</h3><ul><li><p>默认激活的profiles<br>默认激活的profile，对勾颜色显示为灰色，背景颜色为白色<br><img src="/2018/11/02/Maven-profile-in-IntellJ-IDEA/default-profile.png" alt="image"></p></li><li><p>手动激活prod<br>手动激活的对勾背景颜色为蓝色，对勾为白色， 手动激活其他profile则会使pom.xml文件中通过<code>&lt;activeByDefault&gt;true&lt;/activeByDefault&gt;</code>方式默认激活的profile失效。<br><img src="/2018/11/02/Maven-profile-in-IntellJ-IDEA/manual-profile.png" alt="image"></p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> maven </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> maven </tag>
+            
+            <tag> profile </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>java动态代理</title>
       <link href="/2018/10/29/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
       <url>/2018/10/29/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</url>
@@ -95,9 +120,9 @@
       
         <tags>
             
-            <tag> java </tag>
-            
             <tag> Springboot </tag>
+            
+            <tag> java </tag>
             
             <tag> 端口 </tag>
             
@@ -116,9 +141,9 @@
       
         <tags>
             
-            <tag> shell </tag>
-            
             <tag> java </tag>
+            
+            <tag> shell </tag>
             
         </tags>
       
